@@ -127,6 +127,9 @@
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Descargas</h2>
+
+                    <a class="btn btn-primary" href="#" id="btn_descarga_sistema" role="button">Descargar sistema</a>
+
                     <!--<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">University of Colorado Boulder</h3>
@@ -151,9 +154,6 @@
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Manual de usuario</h2>
-                    
-
-
                 </div>
             </section>
             <hr class="m-0" />
@@ -162,6 +162,8 @@
                 <div class="resume-section-content">
                     <h2 class="mb-5">Manual técnico</h2>
 
+                    <a class="btn btn-primary" href="#" id="btn_descarga_manual" role="button">Descargar manual </a>
+                
                 </div>
             </section>
             <hr class="m-0" />
@@ -191,11 +193,16 @@
             
             var i;
             var suma = 0;
+            var link_sistema = ""
             for(i=0;i< response.data.length; i ++){
                 suma += response.data[i].assets[0].download_count;
+                link_sistema = response.data[i].assets[0].browser_download_url;
             }
             
             document.getElementById('descargas').innerHTML = suma;
+            var boton_descarga_sistema = document.getElementById('btn_descarga_sistema'); //or grab it by tagname etc
+            boton_descarga_sistema.href = link_sistema;
+
             })
             .catch(function (error) {
             // handle error
@@ -214,11 +221,17 @@
             
             var i;
             var suma = 0;
+            var link = "";
+            console.log(response.data);
             for(i=0;i< response.data.length; i ++){
                 suma += response.data[i].assets[0].download_count;
+                link = response.data[i].assets[0].browser_download_url;
             }
             
             document.getElementById('descargas_doc').innerHTML = suma;
+            var boton_descarga_manual = document.getElementById('btn_descarga_manual'); //or grab it by tagname etc
+            boton_descarga_manual.href = link;
+            
             })
             .catch(function (error) {
             // handle error
@@ -228,7 +241,9 @@
             // always executed
             });
 
+            
 
+            
             
             
         </script>
