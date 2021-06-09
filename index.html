@@ -51,7 +51,8 @@
                   <h5 class="card-title" style="color: rgba(255, 255, 255, 1);">Estadisticas </h5>
                   <p class="card-text" style="color: rgba(255, 255, 255, 1);"> Visitas: <img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits"> </p>
                   
-                  <p class="card-text" style="color: rgba(255, 255, 255, 1)"> Descargas: <span id="descargas"> </span> </p>
+                  <p class="card-text" style="color: rgba(255, 255, 255, 1)"> Descargas sistema: <span id="descargas"> </span> </p>
+                  <p class="card-text" style="color: rgba(255, 255, 255, 1)"> Descargas Documentación <span id="descargas_doc"> </span> </p>
 
                   
                 </div>
@@ -251,24 +252,50 @@
         <script>
 
             axios.get('https://api.github.com/repos/FroylanMtz/proyectoTAW2019/releases')
-              .then(function (response) {
-                // handle success
-                
-                var i;
-                var suma = 0;
-                for(i=0;i< response.data.length; i ++){
-                    suma += response.data[i].assets[0].download_count;
-                }
-               
-                document.getElementById('descargas').innerHTML = suma;
-              })
-              .catch(function (error) {
-                // handle error
-                console.log(error);
-              })
-              .then(function () {
-                // always executed
-              });
+            .then(function (response) {
+            // handle success
+            
+            var i;
+            var suma = 0;
+            for(i=0;i< response.data.length; i ++){
+                suma += response.data[i].assets[0].download_count;
+            }
+            
+            document.getElementById('descargas').innerHTML = suma;
+            })
+            .catch(function (error) {
+            // handle error
+            console.log(error);
+            })
+            .then(function () {
+            // always executed
+            });
+
+              
+            //descargas_doc
+
+            axios.get('https://api.github.com/repos/DiegoLumbreras/ManualTecnico/releases')
+            .then(function (response) {
+            // handle success
+            
+            var i;
+            var suma = 0;
+            for(i=0;i< response.data.length; i ++){
+                suma += response.data[i].assets[0].download_count;
+            }
+            
+            document.getElementById('descargas_doc').innerHTML = suma;
+            })
+            .catch(function (error) {
+            // handle error
+            console.log(error);
+            })
+            .then(function () {
+            // always executed
+            });
+
+
+            
             
         </script>
 
