@@ -9,14 +9,24 @@
 <p>Esta será la página para almacenar el proyecto</p>
 
 <img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 <script>
-const fileUrl = 'Input.txt' // provide file location
 
-fetch(fileUrl)
-   .then( r => r.text() )
-   .then( t => console.log(t) );
+axios.get('https://api.github.com/repos/FroylanMtz/proyectoTAW2019/releases/')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
 </script>
 
 
